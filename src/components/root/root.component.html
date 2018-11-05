@@ -1,0 +1,12 @@
+{{ appName }}
+<app-header></app-header>
+<div class="row">
+  <div class="col-md-7"><app-receipe-list></app-receipe-list></div>
+  <div class="col-md-4"><app-receipe-details></app-receipe-details></div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12"><app-shoppin-list></app-shoppin-list></div>
+</div>
+
+<input placeholder="give custom app name" title="title" (keypress)="onInputName($event)" />

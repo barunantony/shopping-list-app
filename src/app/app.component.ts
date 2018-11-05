@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shopping-list-app';
+
+  changeTitle (data: { title: string }) {
+    this.title = data.title;
+  }
 }
