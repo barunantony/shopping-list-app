@@ -1,12 +1,14 @@
 {{ appName }}
-<app-header></app-header>
-<div class="row">
-  <div class="col-md-7"><app-receipe-list></app-receipe-list></div>
-  <div class="col-md-4"><app-receipe-details></app-receipe-details></div>
+<app-header (selectionMade)="onSelectionMade($event)"></app-header>
+<div class="row" *ngIf="recipeChosen">
+  <div class="col-md-12"><app-receipe-list></app-receipe-list></div>
 </div>
 <hr>
-<div class="row">
+<div class="row" *ngIf="shoppingChosen">
   <div class="col-md-12"><app-shoppin-list></app-shoppin-list></div>
 </div>
 
-<input placeholder="give custom app name" title="title" (keypress)="onInputName($event)" />
+<div style="position: fixed; bottom: 20px; right:0; z-index: 2; background-color: #ADF; text-align: center">
+  <label for="customAppName" style="display: block">Change App Name</label>
+  <input id="customAppName" placeholder="press Enter" title="title" (keypress)="onInputName($event)" />
+</div>

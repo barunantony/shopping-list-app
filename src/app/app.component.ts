@@ -11,4 +11,8 @@ export class AppComponent {
   changeTitle (data: { title: string }) {
     this.title = data.title;
   }
+
+  logMessage (msg: string, infoType: string) {
+    console.log(`log- ${infoType}|${Date.now}: ${msg}`);
+  }
 }

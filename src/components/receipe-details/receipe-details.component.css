@@ -1,0 +1,10 @@
+.recipeImage > img {
+    position: absolute;
+    max-width: 300px;
+    max-height: 300px;
+    z-index: -1;
+}
+
+.textBackground {
+    color: wheat;
+}

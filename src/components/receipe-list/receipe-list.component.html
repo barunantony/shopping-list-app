@@ -4,17 +4,23 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-sm-8">
     <hr>
-    <a href="#" class="list-group-item clearfix" *ngFor="let recipe of recipes">
-      <div class="float-left">
-        <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
-        <p class="list-group-item-text">{{ recipe.description }}</p>
-      </div>
-      <span class="float-right">
-        <img [src]="recipe.imagePath" alt="" class="img-responsive" style="max-height: 50px;">
-      </span>
-    </a>
-    <app-receipe-item></app-receipe-item>
+    <app-receipe-item 
+      *ngFor="let recipEl of recipes" 
+      [recipe]="recipEl"
+      (selectItem)="onSelectRecipe($event)"
+    >
+    </app-receipe-item>
+  </div>
+  <div class="col-sm-4">
+    <app-receipe-details 
+      *ngIf="!!selectedRecipe; else showInfoText"
+      [recipeDetails]="selectedRecipe"
+    >
+    </app-receipe-details>
+    <ng-template #showInfoText>
+      <p>Please select an item from the recipe list</p>
+    </ng-template>
   </div>
 </div>

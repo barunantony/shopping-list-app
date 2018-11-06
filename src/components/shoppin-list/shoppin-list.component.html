@@ -1,12 +1,18 @@
 <div class="row">
   <div class="col-md-12">
-    <app-shoppin-list-edit></app-shoppin-list-edit>
+    <app-shoppin-list-edit 
+      (ingredientAdded)="addNewIngredient($event)"
+      (ingredientDeleted)="removeIngredient($event)"
+      [loadIngredient]="ingredientSelected"
+    >
+    </app-shoppin-list-edit>
     <hr>
     <ul class="list-group">
       <a
         class="list-group-item"
         style="cursor: pointer"
         *ngFor="let ingredient of ingredients"
+        (click)="loadIngredient(ingredient)"
       >
       {{ ingredient.name }} ({{ ingredient.amount }})
       </a>
