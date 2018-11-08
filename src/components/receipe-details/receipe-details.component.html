@@ -1,10 +1,4 @@
 <div class="row">
-  <div class="col-xs-12 recipeImage">
-    <img [src]="recipeDetails.imagePath" alt="" class="img-responsive">
-  </div>
-</div>
-
-<div class="row">
   <div class="col-xs-12 textBackground">
     <h2> {{recipeDetails.name}}</h2>
   </div>
@@ -12,11 +6,12 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-grp">
+    <div class="btn-group" role="group" appDropdown>
       <button
         type="button"
-        class="btn btn-primary dropdown-toggle">
-      Manage Recipe <span class="caret"></span>
+        class="btn btn-primary dropdown-toggle" 
+      >
+          Manage Recipe <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
         <li><a href="#">To Shopping List</a></li>
@@ -35,5 +30,10 @@
 <div class="row">
   <div class="col-xs-12 textBackground">
     {{recipeDetails.detail}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 recipeImage">
+    <img [src]="recipeDetails.imagePath" alt="" class="img-responsive">
   </div>
 </div>

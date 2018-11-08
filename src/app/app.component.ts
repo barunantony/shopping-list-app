@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'shopping-list-app';
+  title = 'SHOPPING LIST APP';
 
   changeTitle (data: { title: string }) {
     this.title = data.title;

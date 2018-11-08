@@ -10,10 +10,12 @@ import { ReceipeItemComponent } from '../components/receipe-item/receipe-item.co
 import { ShoppinListComponent } from '../components/shoppin-list/shoppin-list.component';
 import { ShoppinListEditComponent } from '../components/shoppin-list-edit/shoppin-list-edit.component';
 import { RootComponent } from '../components/root/root.component';
+import { DropdownDirective } from 'src/customDirectives/dropdown-directive.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DropdownDirective,
     HeaderComponent,
     ReceipeDetailsComponent,
     ReceipeListComponent,
