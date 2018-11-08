@@ -1,33 +1,31 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Ingredient } from 'src/shared/ingredient.model';
+import { ShoppingListService } from 'src/services/shopping-list-service/shopping-list.service';
 
 @Component({
   selector: 'app-shoppin-list',
   templateUrl: './shoppin-list.component.html',
   styleUrls: ['./shoppin-list.component.css']
 })
-export class ShoppinListComponent implements OnInit, OnDestroy {
+export class ShoppinListComponent implements OnInit {
 
-  static ingredientSaved: Ingredient [] = [
-    new Ingredient("Apples", 8),
-    new Ingredient("Tomatoes", 4),
-  ];
   ingredients: Ingredient[];
   ingredientSelected: Ingredient;
 
-  constructor() { 
-    this.ingredients = ShoppinListComponent.ingredientSaved;
+  constructor(private shoppingListService: ShoppingListService) { 
   }
 
   ngOnInit() {
-  }
-
-  ngOnDestroy() {
-    ShoppinListComponent.ingredientSaved = this.ingredients;
+    this.ingredients = this.shoppingListService.getIngredients();
   }
 
   addNewIngredient (event) {
-    this.ingredients.push(new Ingredient(event.name, event.amount));
+    if(event.name && event.amount) {
+      this.ingredients = this.shoppingListService.addNewIngredient(
+        new Ingredient(event.name, event.amount)
+      );
+    }
+    return this.ingredients;
   }
 
   loadIngredient (ingr: Ingredient) {
@@ -35,11 +33,7 @@ export class ShoppinListComponent implements OnInit, OnDestroy {
   }
 
   removeIngredient(ingr: Ingredient) {
-    let indexFound = this.ingredients.findIndex((item) => 
-        item.name === ingr.name && item.amount === ingr.amount); 
-    if (indexFound > -1) {
-      this.ingredients.splice(indexFound, 1);
-    }
+    this.ingredients = this.shoppingListService.removeIngredient(ingr);
   }
 
 }
