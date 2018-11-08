@@ -1,8 +1,11 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { Ingredient } from "src/shared/ingredient.model";
 
 @Injectable({providedIn: 'root'})
 export class ShoppingListService {
+
+    private addNewIngredientEvent = new EventEmitter();
+    private removeNewIngredientEvent = new EventEmitter();
 
     private ingredients: Ingredient [] = [
         new Ingredient("Apples", 8),
@@ -14,8 +17,14 @@ export class ShoppingListService {
     }
 
     addNewIngredient (ingredient: Ingredient) {
-        this.ingredients.push(new Ingredient(ingredient.name, ingredient.amount));
-        return this.ingredients;
+        if (ingredient.name && ingredient.amount) {
+            this.ingredients.push(new Ingredient(ingredient.name, ingredient.amount));
+            this.addNewIngredientEvent.emit();
+        }
+    }
+
+    addNewIngredientListener (calBkFn: Function) {
+        this.addNewIngredientEvent.subscribe(calBkFn);
     }
     
     removeIngredient(ingr: Ingredient) {
@@ -24,6 +33,10 @@ export class ShoppingListService {
         if (indexFound > -1) {
             this.ingredients.splice(indexFound, 1);
         }
-        return this.ingredients;
+        this.removeNewIngredientEvent.emit();
+    }
+
+    removeIngredientListener (calBkFn: Function) {
+        this.removeNewIngredientEvent.subscribe(calBkFn);
     }
 }

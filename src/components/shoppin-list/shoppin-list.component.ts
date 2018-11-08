@@ -17,23 +17,21 @@ export class ShoppinListComponent implements OnInit {
 
   ngOnInit() {
     this.ingredients = this.shoppingListService.getIngredients();
-  }
 
-  addNewIngredient (event) {
-    if(event.name && event.amount) {
-      this.ingredients = this.shoppingListService.addNewIngredient(
-        new Ingredient(event.name, event.amount)
-      );
-    }
-    return this.ingredients;
+    this.shoppingListService.addNewIngredientListener(() =>
+      this.refreshIngredients(this.shoppingListService.getIngredients())
+    );
+
+    this.shoppingListService.removeIngredientListener(() =>
+      this.refreshIngredients(this.shoppingListService.getIngredients())
+    );
   }
 
   loadIngredient (ingr: Ingredient) {
     this.ingredientSelected = ingr;
   }
 
-  removeIngredient(ingr: Ingredient) {
-    this.ingredients = this.shoppingListService.removeIngredient(ingr);
+  refreshIngredients (ingrnts: Ingredient[]) {
+    this.ingredients = ingrnts;
   }
-
 }

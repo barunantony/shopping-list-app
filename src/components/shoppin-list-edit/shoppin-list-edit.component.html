@@ -9,7 +9,7 @@
             id="name" 
             #inputName 
             class="form-control" 
-            [value]="loadIngredient && loadIngredient.name"
+            [value]="ingredientSelected && ingredientSelected.name"
           />
         </div>
         <div class="col-sm-2 form-group">
@@ -19,7 +19,7 @@
             id="amount" 
             #inputAmount 
             class="form-control"
-            [value]="loadIngredient && loadIngredient.amount"
+            [value]="ingredientSelected && ingredientSelected.amount"
           />
         </div>
       </div>

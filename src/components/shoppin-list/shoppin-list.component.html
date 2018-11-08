@@ -1,9 +1,7 @@
 <div class="row">
   <div class="col-md-12">
     <app-shoppin-list-edit 
-      (ingredientAdded)="addNewIngredient($event)"
-      (ingredientDeleted)="removeIngredient($event)"
-      [loadIngredient]="ingredientSelected"
+      [ingredientSelected]="ingredientSelected"
     >
     </app-shoppin-list-edit>
     <hr>
