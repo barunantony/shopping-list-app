@@ -39,4 +39,9 @@ export class ShoppingListService {
     removeIngredientListener (calBkFn: Function) {
         this.removeNewIngredientEvent.subscribe(calBkFn);
     }
+
+    addNewIngredients (ingrs: Ingredient[]) {
+        this.ingredients.push(...ingrs);
+        this.addNewIngredientEvent.emit();
+    }
 }

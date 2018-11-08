@@ -31,7 +31,11 @@ export class ShoppinListEditComponent implements OnInit {
   }
 
   deleteIngredient() {
-    this.shoppingListService.removeIngredient(this.ingredientSelected);
+    this.shoppingListService.removeIngredient(
+      new Ingredient(this.inputNameRef.nativeElement.value, 
+        parseInt(this.inputAmountRef.nativeElement.value)
+      )
+    );
   }
 
 }
