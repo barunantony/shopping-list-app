@@ -1,10 +1,11 @@
 .recipeImage > img {
     position: absolute;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 500px;
+    max-height: 500px;
     z-index: -1;
+    top: 0;
 }
 
 .textBackground {
-    color: darkblue;
+    color: lightblue;
 }
