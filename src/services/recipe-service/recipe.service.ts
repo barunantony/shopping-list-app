@@ -1,8 +1,9 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { Recipe } from "src/components/receipe-list/receipe.model";
 
 @Injectable({providedIn: 'root'})
 export class RecipeService {
+
    private recipes: Recipe[] = [
         new Recipe (
             'test recipe', 
@@ -17,8 +18,24 @@ export class RecipeService {
             'details fro recipe 2 ..............'
         ),
     ];
+    private recipeSelectedEvent = new EventEmitter();
+    private recipeSelected: Recipe;
 
     getRecipes () {
         return this.recipes.slice();
     }
+
+    getRecipeSelected () {
+        return this.recipeSelected;
+    }
+
+    onRecipeSelected (recipe: Recipe) {
+        this.recipeSelected = recipe;
+        this.recipeSelectedEvent.emit();
+    }
+
+    subscribeToRecipeSelected (callBackFunc: Function) {
+        this.recipeSelectedEvent.subscribe(callBackFunc);
+    }
+
 }
