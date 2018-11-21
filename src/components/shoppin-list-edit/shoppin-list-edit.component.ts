@@ -13,9 +13,7 @@ export class ShoppinListEditComponent implements OnInit {
   @ViewChild('inputAmount') inputAmountRef: ElementRef;
   @Input() ingredientSelected: Ingredient;
 
-  constructor(private shoppingListService: ShoppingListService) {
-    console.log(this);
-   }
+  constructor(private shoppingListService: ShoppingListService) {}
 
   ngOnInit() {
     this.ingredientSelected = this.ingredientSelected || null;
