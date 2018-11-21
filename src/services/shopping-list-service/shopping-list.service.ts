@@ -29,7 +29,7 @@ export class ShoppingListService {
         }
     }
 
-    addNewIngredientListener (calBkFn: Observer<Function>) {
+    addNewIngredientListener (calBkFn: any) {
         this.addNewIngredientEvent.subscribe(calBkFn);
     }
     
