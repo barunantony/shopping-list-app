@@ -1,10 +1,11 @@
 import { Injectable, EventEmitter } from "@angular/core";
 import { Ingredient } from "src/shared/ingredient.model";
+import { Subject, Observer } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class ShoppingListService {
 
-    private addNewIngredientEvent = new EventEmitter();
+    private addNewIngredientEvent = new Subject();
     private removeNewIngredientEvent = new EventEmitter();
 
     private ingredients: Ingredient [] = [
@@ -24,11 +25,11 @@ export class ShoppingListService {
             } else {
                 this.ingredients[indx].amount +=  ingredient.amount;
             }
-            this.addNewIngredientEvent.emit();
+            this.addNewIngredientEvent.next();
         }
     }
 
-    addNewIngredientListener (calBkFn: Function) {
+    addNewIngredientListener (calBkFn: Observer<Function>) {
         this.addNewIngredientEvent.subscribe(calBkFn);
     }
     
@@ -56,6 +57,6 @@ export class ShoppingListService {
             }
             return acc;
         }, []);
-        this.addNewIngredientEvent.emit();
+        this.addNewIngredientEvent.next();
     }
 }
