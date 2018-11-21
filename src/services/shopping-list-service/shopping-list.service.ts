@@ -18,7 +18,12 @@ export class ShoppingListService {
 
     addNewIngredient (ingredient: Ingredient) {
         if (ingredient.name && ingredient.amount) {
-            this.ingredients.push(new Ingredient(ingredient.name, ingredient.amount));
+            const indx = this.ingredients.findIndex((item) => item.name === ingredient.name);
+            if (indx === -1) {
+                this.ingredients.push(new Ingredient(ingredient.name, ingredient.amount));
+            } else {
+                this.ingredients[indx].amount +=  ingredient.amount;
+            }
             this.addNewIngredientEvent.emit();
         }
     }
@@ -42,6 +47,15 @@ export class ShoppingListService {
 
     addNewIngredients (ingrs: Ingredient[]) {
         this.ingredients.push(...ingrs);
+        this.ingredients = this.ingredients.reduce((acc, cur) => {
+            const indx = acc.findIndex((item) => item.name === cur.name);
+            if (indx === -1) {
+                acc.push(new Ingredient(cur.name, cur.amount));
+            } else {
+                acc[indx].amount +=  cur.amount;
+            }
+            return acc;
+        }, []);
         this.addNewIngredientEvent.emit();
     }
 }

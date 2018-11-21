@@ -24,7 +24,7 @@ export class RecipeService {
             'https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/frying-pan-pizza-easy-recipe-collection.jpg',
             'details fro recipe 2 ..............',
             [
-                new Ingredient('Tomato', 1),
+                new Ingredient('Tomatoes', 1),
                 new Ingredient('Cheese', 1),
                 new Ingredient('Wheat Four', 1),
                 new Ingredient('Salt', 1),

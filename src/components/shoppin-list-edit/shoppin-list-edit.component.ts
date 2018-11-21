@@ -13,10 +13,12 @@ export class ShoppinListEditComponent implements OnInit {
   @ViewChild('inputAmount') inputAmountRef: ElementRef;
   @Input() ingredientSelected: Ingredient;
 
-  constructor(private shoppingListService: ShoppingListService) { }
+  constructor(private shoppingListService: ShoppingListService) {
+    console.log(this);
+   }
 
   ngOnInit() {
-    this.ingredientSelected = this.ingredientSelected || new Ingredient('', 0);
+    this.ingredientSelected = this.ingredientSelected || null;
   }
 
   addIngredient() {
@@ -27,7 +29,9 @@ export class ShoppinListEditComponent implements OnInit {
   }
 
   clearLoadedIngredient() {
-    this.ingredientSelected = new Ingredient('', 0);
+    this.ingredientSelected = null;
+    this.inputNameRef.nativeElement.value = '';
+    this.inputAmountRef.nativeElement.value = '';
   }
 
   deleteIngredient() {
