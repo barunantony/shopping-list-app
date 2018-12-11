@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from '../components/header/header.component';
@@ -11,6 +12,7 @@ import { ShoppinListComponent } from '../components/shoppin-list/shoppin-list.co
 import { ShoppinListEditComponent } from '../components/shoppin-list-edit/shoppin-list-edit.component';
 import { RootComponent } from '../components/root/root.component';
 import { DropdownDirective } from 'src/customDirectives/dropdown-directive.directive';
+import { shoppingListReducer } from 'src/state/reducer/shopping-list.reducer';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,12 @@ import { DropdownDirective } from 'src/customDirectives/dropdown-directive.direc
     ReceipeItemComponent,
     RootComponent,
     ShoppinListComponent,
-    ShoppinListEditComponent,
+    ShoppinListEditComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    StoreModule.forRoot({ shoppingList: shoppingListReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]
